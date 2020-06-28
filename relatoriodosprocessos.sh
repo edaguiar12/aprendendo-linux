@@ -4,7 +4,7 @@ function pause() {
     read -p "$*"
 }
 
-whoami | cat > USER
+whoami | cat >USER
 
 echo -e "Vamos criar um arquivo de informações dos processos? \nSim: digite y \nNão: digite n"
 
@@ -13,7 +13,6 @@ read yesno
 if [ $yesno != "y" ]; then
     exit 1
 else
-
     if [ -d != "/Documents/Processos" ]; then
         echo "Vamos começar removendo aquivos e pastas criados anteriormente..."
         rm -rf Processos
@@ -23,10 +22,10 @@ else
     echo "criando o arquivo proc.."
     touch proc.txt
     echo "colocando os processos dentro do arquivo.."
-    df -la | cat > proc.txt
+    df -la | cat >proc.txt
     echo "criando um backup de nosso arquivo"
     cp proc.txt procBkp.txt && mv procBkp.txt ~/Documents/Processos
-    echo "Trocando as permissões do arquivo para não permitir mais mudanças"  
+    echo "Trocando as permissões do arquivo para não permitir mais mudanças"
     cd ~/Documents/Processos && chown $USER:$USER procBkp.txt && chmod 444 procBkp.txt
     echo "Excluindo os arquivos e pastas que não iremos mais usar.."
     cd ~/Documents/Processos && rm -rf Processos2
