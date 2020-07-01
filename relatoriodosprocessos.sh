@@ -34,5 +34,5 @@ else
     echo "Pronto!"
     pause "Aperte uma tecla para visualizar o arquivo criado. 
     Use as setas do teclado para percorrer o arquivo e quando tiver terminado aperte a tecla (q) do teclado!"
-    less RelatorioProcessos.txt
+    less RelatorioProcessos.txt | auk '{ print $5 }'
 fi
